@@ -1,0 +1,53 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 38.242.149.154 >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        run: |
+          ssh -i ~/.ssh/id_rsa root@38.242.149.154 << 'EOF'
+            echo "== Backend Deployment Started =="
+
+            export NVM_DIR="/root/.nvm"
+            export PATH="$NVM_DIR/versions/node/v22.12.0/bin:$PATH"
+
+            echo "Pulling latest changes from Git..."
+
+            echo "Stashing changes..."
+            git stash
+
+            echo "Pulling latest changes from Git..."
+            cd /home/gafiapay-api/htdocs/api.gafiapay.com
+            git pull
+
+            echo "Removing node_modules..."
+            rm -rf node_modules
+
+            echo "Installing dependencies..."
+            npm install
+
+            echo "Building project..."
+            npm run build
+
+            echo "Restarting PM2 process..."
+            pm2 restart payment
+
+            echo "Update completed!"
+          EOF
