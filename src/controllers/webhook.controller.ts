@@ -406,7 +406,8 @@ export const handlePaymentNotification = catchAsync(
 // Get webhook activities for a business
 export const getWebhookActivities = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { _id: businessId } = req.business;
+    const businessId = req.params.businessId;
+
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
     const status = req.query.status as 'success' | 'failed' | undefined;

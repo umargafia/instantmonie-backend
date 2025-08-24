@@ -16,7 +16,7 @@ router.post('/payment/notification', handlePaymentNotification);
 router.use(authController.protect);
 
 // Get webhook activities
-router.get('/activities', getWebhookActivities);
+router.get('/activities/:businessId', getWebhookActivities);
 
 // Get webhook activity details
 router.get('/activities/:id', getWebhookActivity);
