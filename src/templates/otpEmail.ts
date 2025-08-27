@@ -4,7 +4,7 @@ import path from 'path';
 interface OTPEmailTemplateProps {
   otp: string;
   expiryMinutes: number;
-  type: 'forgot-password' | 'verify-email' | 'withdrawal';
+  type: 'forgot-password' | 'verify-email' | 'withdrawal' | 'general';
   firstName: string;
 }
 
@@ -344,6 +344,8 @@ export const getOTPEmailTemplate = ({
         return 'Email Verification';
       case 'withdrawal':
         return 'Withdrawal Verification';
+      case 'general':
+        return 'Verification';
       default:
         return 'Verification';
     }

@@ -21,7 +21,7 @@ export const sendOTP = catchAsync(async (req: Request, res: Response, next: Next
     return new AppError('Please provide either email or phone number', 400);
   }
 
-  if (!type || !['forgot-password', 'verify-email', 'withdrawal'].includes(type)) {
+  if (!type || !['forgot-password', 'verify-email', 'withdrawal', 'general'].includes(type)) {
     return new AppError('Invalid OTP type', 400);
   }
 
