@@ -18,11 +18,11 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 38.242.149.154 >> ~/.ssh/known_hosts
+          ssh-keyscan -H 38.242.152.244 >> ~/.ssh/known_hosts
 
       - name: Deploy to Server
         run: |
-          ssh -i ~/.ssh/id_rsa root@38.242.149.154 << 'EOF'
+          ssh -i ~/.ssh/id_rsa root@38.242.152.244 << 'EOF'
             echo "== Backend Deployment Started =="
 
             export NVM_DIR="/root/.nvm"
