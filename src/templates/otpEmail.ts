@@ -8,13 +8,13 @@ interface OTPEmailTemplateProps {
   firstName: string;
 }
 
-// Complete embedded OTP email template
+// Primary color changed to purple
 const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your GafiaPay Verification Code</title>
+    <title>Your InstantMonee Verification Code</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -41,7 +41,7 @@ const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
       .header {
         text-align: center;
         padding: 40px 20px;
-        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        background: linear-gradient(135deg, #a21caf 0%, #7c3aed 100%);
         position: relative;
         overflow: hidden;
       }
@@ -119,14 +119,14 @@ const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
       .otp-code {
         font-size: 48px;
         font-weight: 700;
-        color: #2563eb;
+        color: #a21caf;
         letter-spacing: 8px;
         margin: 24px 0;
         font-family: 'Inter', monospace;
         background: rgba(255, 255, 255, 0.5);
         padding: 24px;
         border-radius: 12px;
-        border: 2px dashed #2563eb;
+        border: 2px dashed #a21caf;
         display: inline-block;
       }
 
@@ -195,7 +195,7 @@ const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
 
       .security-info li::before {
         content: '✓';
-        color: #2563eb;
+        color: #a21caf;
         font-weight: bold;
         margin-right: 8px;
       }
@@ -221,7 +221,7 @@ const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
       }
 
       .social-links a:hover {
-        color: #2563eb;
+        color: #a21caf;
       }
 
       .footer-text {
@@ -276,12 +276,6 @@ const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
   <body>
     <div class="container">
       <div class="header">
-        <div class="logo">
-          <img
-            src="https://www.dropbox.com/scl/fi/esjpan8ewl9enf48pwqbp/primary-logo-R.png?rlkey=fykelqzmhnhbcizpa4jv07rli&st=vpf42i5f&dl=1"
-            alt="GafiaPay Logo"
-          />
-        </div>
         <h1>Verification Code</h1>
       </div>
 
@@ -328,12 +322,8 @@ const EMBEDDED_OTP_TEMPLATE = `<!doctype html>
       </div>
 
       <div class="footer">
-        <div class="social-links">
-          <a href="https://twitter.com/gafiapay">Twitter</a>
-          <a href="https://linkedin.com/company/gafiapay">LinkedIn</a>
-          <a href="https://docs.gafiapay.com/introduction/">API Docs</a>
-        </div>
-        <p class="footer-text">© {{currentYear}} GafiaPay. All rights reserved.</p>
+        
+        <p class="footer-text">© {{currentYear}} InstantMonee. All rights reserved.</p>
         <p class="footer-text">This is an automated message, please do not reply.</p>
       </div>
     </div>

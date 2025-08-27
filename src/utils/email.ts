@@ -25,7 +25,7 @@ export const sendEmail = async (options: EmailOptions) => {
 
   // Define email options
   const mailOptions = {
-    from: `GafiaPay <${env.EMAIL_FROM}>`,
+    from: `InstantMonee <${env.EMAIL_FROM}>`,
     to: options.email,
     subject: options.subject,
     text: options.message,
